@@ -13,7 +13,7 @@ class TaskGridPage {
     // Checking the content of the ‘To do’ grid
     async checkTaskGridToDo() {
 
-        // Selecting "CANDIDAT TEST AUTO (CAND001)" organisation
+        // Select "CANDIDAT TEST AUTO (CAND001)" organization
         await this.filterCandidatTestAuto.waitForDisplayed();
 
         // Check cells are present
@@ -22,7 +22,7 @@ class TaskGridPage {
         await expect(this.taskGridRow).toHaveText(expect.stringContaining("Enregistrement"));
         await expect(this.taskGridRow).toHaveText(expect.stringContaining("30/12/2024"));
 
-        // Selecting "l’organisation J’aime les tests (L1)" organisation
+        // Select "l’organisation J’aime les tests (L1)" organization
         await this.filterLikeTests.waitForDisplayed();
         await this.filterLikeTests.click();
         await browser.pause(5000);

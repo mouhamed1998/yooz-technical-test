@@ -1,7 +1,7 @@
 const { $, browser } = require('@wdio/globals')
 
 class TasksPage {
-    
+
     get filterIcon(){ return $('mat-icon.mat-icon=keyboard_arrow_right')} ;
 
     get organisationLabel () {return  $('div.form-label-container').$('label.form-label=Organisation')};
@@ -27,54 +27,63 @@ class TasksPage {
     get date() { return $('//input[@name="config.code"]')};  
 
 
-    async applyFilters() {
-        
-        // check filter icon is displayed and display component
+    // Filter by organization
+    async filterByOrganization() {
+
+        // Check filter icon is displayed and display component
         await this.filterIcon.waitForDisplayed();
 
-        // Sélectionner les organisations
+        // Open organization filter
         await this.organisationLabel.waitForDisplayed();
         const organisationField = this.organisationLabel.parentElement().nextElement();
         await organisationField.click();
         await browser.pause(2000);
 
-        // Sélectionner "CANDIDAT TEST AUTO"
+        // Select "CANDIDAT TEST AUTO" 
         await this.candidatTestAuto.waitForDisplayed();
         await this.candidatTestAuto.click();
 
-        // Sélectionner "J’aime les tests"
+        // Select "J’aime les tests"
         await this.likeTests.waitForDisplayed();
         await this.likeTests.click();
 
         // Submit selections
         await this.submitButton.click();
         await browser.pause(3000);
-        
-        // Sélectionner les types de document
+    }
+
+     // Filter by document types
+     async filterByDocumentTypes() {
+
+        // Open document types filter
         await this.documentTypeLabel.waitForDisplayed();
         const documentTypeField = this.documentTypeLabel.parentElement().nextElement();
         await documentTypeField.click();
         await browser.pause(2000);
 
-        // Sélectionner "Facture de vente"
+        // Select "Facture de vente"
         await this.invoiceSales.waitForDisplayed();
         await this.invoiceSales.click();
 
-        // Sélectionner "Facture d’achat"
+        // Select "Facture d’achat"
         await this.invoicePurchase.waitForDisplayed();
         await this.invoicePurchase.click();
 
         // Submit selections
         await this.submitButton.click();
         await browser.pause(3000);
+    }
 
-        // Sélectionner la date
+     // Filter by date 
+     async filterByDate() {
+        
+        // Open date filter
         await this.dateLabel.waitForDisplayed();
         const dateField = this.dateLabel.parentElement().nextElement();
         await dateField.click();
         await browser.pause(2000);
 
-        // Sélectionner "Supérieur ou égal à : 07/02/2025"
+        // Select "Supérieur ou égal à : 07/02/2025"
         await this.moreThanOrEqualTo.waitForDisplayed();
         await this.moreThanOrEqualTo.click();
         await browser.pause(2000);

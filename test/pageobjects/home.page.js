@@ -27,8 +27,6 @@ class HomePage {
     async navigateToTasks() {
         await this.tasksSection.click();
         await this.tasksGrid.waitForDisplayed();
-        //await this.tasksGrid.click();
-        //browser.setTimeout({ 'pageLoad': 100000 });
     }
 }
 

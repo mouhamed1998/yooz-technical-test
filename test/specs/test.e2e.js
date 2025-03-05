@@ -19,7 +19,9 @@ describe('Yooz user guide', () => {
     });
 
     it('Selecting grid filters', async () => {
-        await TasksPage.applyFilters();
+        await TasksPage.filterByOrganization();
+        await TasksPage.filterByDocumentTypes();
+        await TasksPage.filterByDate();
     });
 
     it("Checking the content of the ‘To do’ grid", async () => {
